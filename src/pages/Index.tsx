@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import { ArrowDown, ArrowUp, Github, Linkedin } from "lucide-react";
+import { ArrowDown, ArrowUp, Github, Linkedin, Code, Sparkles, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -67,46 +66,114 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      {/* Enhanced Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10"></div>
-        <div className="absolute top-20 left-20 w-20 h-20 bg-orange-400 rounded-full opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 bg-blue-400 rounded-full opacity-20 animate-bounce"></div>
+        {/* Dynamic Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-indigo-600/10"></div>
+          
+          {/* Floating geometric shapes */}
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl opacity-20 animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
+          <div className="absolute top-40 right-20 w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-32 left-32 w-24 h-24 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl opacity-25 animate-bounce" style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
+          <div className="absolute bottom-20 right-40 w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full opacity-35 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+          
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        </div>
         
-        <div className="container max-w-6xl mx-auto text-center relative z-10">
+        <div className="container max-w-7xl mx-auto text-center relative z-10">
           <div className="animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              Hi, I'm <span className="text-blue-600">Gaurav Mathur</span>
+            {/* Status Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-blue-200 rounded-full px-4 py-2 mb-8 shadow-lg">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-slate-700">Available for opportunities</span>
+            </div>
+
+            {/* Main Headline with enhanced typography */}
+            <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 mb-6 leading-tight tracking-tight">
+              Hi, I'm{" "}
+              <span className="relative">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800">
+                  Gaurav
+                </span>
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 blur-lg -z-10"></div>
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-4 font-medium">
-              Final Year CSE Student | Aspiring Software Developer & ML Enthusiast
-            </p>
-            <p className="text-lg md:text-xl text-gray-500 mb-8 max-w-3xl mx-auto">
-              I build intelligent systems that solve real-world problems.
-            </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            {/* Subtitle with better hierarchy */}
+            <div className="space-y-4 mb-8">
+              <p className="text-2xl md:text-3xl font-bold text-slate-700 mb-2">
+                Final Year CSE Student
+              </p>
+              <div className="flex flex-wrap justify-center gap-3 mb-4">
+                <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 border border-blue-100">
+                  <Code className="w-4 h-4 text-blue-600" />
+                  <span className="text-sm font-semibold text-slate-700">Software Developer</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 border border-purple-100">
+                  <Sparkles className="w-4 h-4 text-purple-600" />
+                  <span className="text-sm font-semibold text-slate-700">ML Enthusiast</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 border border-indigo-100">
+                  <Zap className="w-4 h-4 text-indigo-600" />
+                  <span className="text-sm font-semibold text-slate-700">Problem Solver</span>
+                </div>
+              </div>
+              <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+                I build intelligent systems that solve real-world problems through the power of{" "}
+                <span className="font-semibold text-blue-700">AI</span> and{" "}
+                <span className="font-semibold text-purple-700">innovative technology</span>
+              </p>
+            </div>
+            
+            {/* Enhanced CTA buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <Button 
                 size="lg" 
-                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-200"
+                className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl transform hover:scale-105 transition-all duration-300 border-0"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Explore My Work
+                <span className="mr-2">Explore My Work</span>
+                <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-200"
+                className="bg-white/80 backdrop-blur-sm border-2 border-slate-200 text-slate-700 hover:bg-white hover:border-blue-300 hover:text-blue-700 px-8 py-4 rounded-full text-lg font-bold shadow-lg transform hover:scale-105 transition-all duration-300"
               >
-                Download Resume
+                <span className="mr-2">Download Resume</span>
+                <Github className="w-5 h-5" />
               </Button>
+            </div>
+
+            {/* Stats or quick highlights */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-blue-100 shadow-lg">
+                <div className="text-3xl font-black text-blue-600 mb-2">4+</div>
+                <div className="text-sm font-semibold text-slate-600">Projects Completed</div>
+              </div>
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-purple-100 shadow-lg">
+                <div className="text-3xl font-black text-purple-600 mb-2">3+</div>
+                <div className="text-sm font-semibold text-slate-600">Certifications</div>
+              </div>
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-indigo-100 shadow-lg">
+                <div className="text-3xl font-black text-indigo-600 mb-2">2+</div>
+                <div className="text-sm font-semibold text-slate-600">Years Experience</div>
+              </div>
             </div>
           </div>
         </div>
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="w-6 h-6 text-blue-600" />
+        {/* Enhanced scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="flex flex-col items-center gap-2 animate-bounce">
+            <span className="text-sm font-medium text-slate-500">Scroll to explore</span>
+            <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-slate-400 rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
         </div>
       </section>
 

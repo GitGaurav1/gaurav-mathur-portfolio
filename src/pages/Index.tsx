@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { ArrowDown, ArrowUp, Github, Linkedin, Code, Sparkles, Zap, Award, BookOpen } from "lucide-react";
+import { ArrowDown, ArrowUp, Github, Linkedin, Code, Sparkles, Zap, Award, BookOpen, Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -15,6 +15,7 @@ const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: ""
   });
 
@@ -24,7 +25,7 @@ const Index = () => {
       title: "Message Sent!",
       description: "Thank you for reaching out. I'll get back to you soon!",
     });
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   const projects = [
@@ -366,59 +367,139 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 px-4">
-        <div className="container max-w-4xl mx-auto">
+      {/* Contact Section - Enhanced to match reference */}
+      <section className="py-20 px-4 bg-gradient-to-br from-orange-50 to-yellow-50">
+        <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Let's Connect</h2>
-            <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
-            <p className="text-xl text-gray-600 mt-6">Have a project in mind? Let's discuss how we can work together.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Let's Create Something Amazing!</h2>
+            <div className="w-20 h-1 bg-orange-500 mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Have a project in mind? Let's discuss how we can work together to bring your ideas to life.
+            </p>
           </div>
           
-          <Card className="p-8 border-0 shadow-xl bg-white">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Get in Touch Section */}
+            <div className="bg-white rounded-3xl p-8 shadow-xl border border-orange-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-8">Get in Touch</h3>
+              
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500 mb-1">Email</p>
+                    <p className="text-lg font-semibold text-gray-900">mathurgaurav1742@gmail.com</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500 mb-1">Phone</p>
+                    <p className="text-lg font-semibold text-gray-900">+91 (XXX) XXX-XXXX</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <Linkedin className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500 mb-1">LinkedIn</p>
+                    <p className="text-lg font-semibold text-gray-900">Gaurav Mathur</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-orange-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500 mb-1">Location</p>
+                    <p className="text-lg font-semibold text-gray-900">Noida, Uttar Pradesh</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                    <Clock className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500 mb-1">Working Hours</p>
+                    <p className="text-lg font-semibold text-gray-900">Mon - Fri, 9:00 - 17:00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Send a Message Section */}
+            <div className="bg-white rounded-3xl p-8 shadow-xl border border-orange-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-8">Send a Message</h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <Label htmlFor="name" className="text-sm font-medium text-gray-700">Name</Label>
+                  <Label htmlFor="name" className="text-sm font-medium text-gray-700 mb-2 block">Name</Label>
                   <Input
                     id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="mt-1"
+                    className="h-12 border-gray-200 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="Your full name"
                     required
                   />
                 </div>
+                
                 <div>
-                  <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email</Label>
+                  <Label htmlFor="email" className="text-sm font-medium text-gray-700 mb-2 block">Email</Label>
                   <Input
                     id="email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="mt-1"
+                    className="h-12 border-gray-200 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="your.email@example.com"
                     required
                   />
                 </div>
-              </div>
-              <div>
-                <Label htmlFor="message" className="text-sm font-medium text-gray-700">Message</Label>
-                <Textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="mt-1 min-h-[120px]"
-                  required
-                />
-              </div>
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-200"
-              >
-                Send Message
-              </Button>
-            </form>
-          </Card>
+                
+                <div>
+                  <Label htmlFor="subject" className="text-sm font-medium text-gray-700 mb-2 block">Subject</Label>
+                  <Input
+                    id="subject"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                    className="h-12 border-gray-200 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="What's this about?"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <Label htmlFor="message" className="text-sm font-medium text-gray-700 mb-2 block">Message</Label>
+                  <Textarea
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    className="min-h-[120px] border-gray-200 focus:border-blue-500 focus:ring-blue-500 resize-none"
+                    placeholder="Tell me about your project or idea..."
+                    required
+                  />
+                </div>
+                
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-4 rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg"
+                >
+                  Send Message
+                </Button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -1,5 +1,6 @@
+
 import { useState } from "react";
-import { ArrowDown, ArrowUp, Github, Linkedin, Code, Sparkles, Zap } from "lucide-react";
+import { ArrowDown, ArrowUp, Github, Linkedin, Code, Sparkles, Zap, Award, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Index = () => {
   const { toast } = useToast();
@@ -27,28 +29,29 @@ const Index = () => {
 
   const projects = [
     {
+      title: "Rock, Paper, Scissors Game",
+      description: "Gesture-recognition game using computer vision with published research paper.",
+      tech: ["Python", "OpenCV", "ML", "Computer Vision"],
+      type: "Published Research",
+      highlight: true
+    },
+    {
+      title: "Parkinson's Disease Detection",
+      description: "ML model for early detection of Parkinson's using voice features and biomedical data.",
+      tech: ["Python", "SVM", "Machine Learning", "Biomedical Data"],
+      type: "Healthcare AI"
+    },
+    {
+      title: "Drowsiness Detection System",
+      description: "Real-time system to detect driver drowsiness and enhance road safety.",
+      tech: ["Python", "OpenCV", "Computer Vision", "Safety Systems"],
+      type: "Computer Vision"
+    },
+    {
       title: "Cyberbullying Threat Analysis",
       description: "Analyzes text & images for bullying, sends reports to parents.",
       tech: ["Flask", "Tesseract", "VADER", "Maps API"],
       type: "AI/ML Project"
-    },
-    {
-      title: "Driver Drowsiness Detection",
-      description: "Alerts drivers and suggests rest stops when drowsiness is detected.",
-      tech: ["OpenCV", "Google Maps", "AI Speech Recognition"],
-      type: "Computer Vision"
-    },
-    {
-      title: "Parkinson's Detection",
-      description: "ML model for early detection of Parkinson's using voice features.",
-      tech: ["Python", "SVM", "Biomedical Data"],
-      type: "Healthcare AI"
-    },
-    {
-      title: "Rock, Paper, Scissors Game",
-      description: "Gesture-recognition game using computer vision.",
-      tech: ["Python", "OpenCV", "ML"],
-      type: "Fun Project"
     }
   ];
 
@@ -85,10 +88,24 @@ const Index = () => {
         
         <div className="container max-w-7xl mx-auto text-center relative z-10">
           <div className="animate-fade-in">
+            {/* Profile Photo */}
+            <div className="mb-8 flex justify-center">
+              <Avatar className="w-32 h-32 border-4 border-white shadow-2xl">
+                <AvatarImage 
+                  src="https://i.postimg.cc/NK14mBkF/image.jpg" 
+                  alt="Gaurav Mathur"
+                  className="object-cover"
+                />
+                <AvatarFallback className="text-2xl font-bold bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+                  GM
+                </AvatarFallback>
+              </Avatar>
+            </div>
+
             {/* Status Badge */}
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-blue-200 rounded-full px-4 py-2 mb-8 shadow-lg">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-slate-700">Available for opportunities</span>
+              <span className="text-sm font-medium text-slate-700">Recently Graduated & Available</span>
             </div>
 
             {/* Main Headline with enhanced typography */}
@@ -105,7 +122,7 @@ const Index = () => {
             {/* Subtitle with better hierarchy */}
             <div className="space-y-4 mb-8">
               <p className="text-2xl md:text-3xl font-bold text-slate-700 mb-2">
-                Final Year CSE Student
+                B.Tech CSE Graduate from VIT Vellore
               </p>
               <div className="flex flex-wrap justify-center gap-3 mb-4">
                 <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 border border-blue-100">
@@ -116,15 +133,15 @@ const Index = () => {
                   <Sparkles className="w-4 h-4 text-purple-600" />
                   <span className="text-sm font-semibold text-slate-700">ML Enthusiast</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 border border-indigo-100">
-                  <Zap className="w-4 h-4 text-indigo-600" />
-                  <span className="text-sm font-semibold text-slate-700">Problem Solver</span>
+                <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 border border-green-100">
+                  <Award className="w-4 h-4 text-green-600" />
+                  <span className="text-sm font-semibold text-slate-700">Published Researcher</span>
                 </div>
               </div>
               <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-                I build intelligent systems that solve real-world problems through the power of{" "}
-                <span className="font-semibold text-blue-700">AI</span> and{" "}
-                <span className="font-semibold text-purple-700">innovative technology</span>
+                I build intelligent systems that solve real-world problems through{" "}
+                <span className="font-semibold text-blue-700">AI & Machine Learning</span>, with a{" "}
+                <span className="font-semibold text-purple-700">published research paper</span> to my name
               </p>
             </div>
             
@@ -144,23 +161,27 @@ const Index = () => {
                 className="bg-white/80 backdrop-blur-sm border-2 border-slate-200 text-slate-700 hover:bg-white hover:border-blue-300 hover:text-blue-700 px-8 py-4 rounded-full text-lg font-bold shadow-lg transform hover:scale-105 transition-all duration-300"
               >
                 <span className="mr-2">Download Resume</span>
-                <Github className="w-5 h-5" />
+                <BookOpen className="w-5 h-5" />
               </Button>
             </div>
 
             {/* Stats or quick highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-blue-100 shadow-lg">
                 <div className="text-3xl font-black text-blue-600 mb-2">4+</div>
-                <div className="text-sm font-semibold text-slate-600">Projects Completed</div>
+                <div className="text-sm font-semibold text-slate-600">ML Projects</div>
               </div>
               <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-purple-100 shadow-lg">
-                <div className="text-3xl font-black text-purple-600 mb-2">3+</div>
+                <div className="text-3xl font-black text-purple-600 mb-2">1</div>
+                <div className="text-sm font-semibold text-slate-600">Published Paper</div>
+              </div>
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-green-100 shadow-lg">
+                <div className="text-3xl font-black text-green-600 mb-2">3+</div>
                 <div className="text-sm font-semibold text-slate-600">Certifications</div>
               </div>
-              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-indigo-100 shadow-lg">
-                <div className="text-3xl font-black text-indigo-600 mb-2">2+</div>
-                <div className="text-sm font-semibold text-slate-600">Years Experience</div>
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-orange-100 shadow-lg">
+                <div className="text-3xl font-black text-orange-600 mb-2">VIT</div>
+                <div className="text-sm font-semibold text-slate-600">Graduate</div>
               </div>
             </div>
           </div>
@@ -188,17 +209,25 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-gray-600 leading-relaxed">
-                I'm a responsible and committed final-year B.Tech student at VIT Vellore, passionate about developing impactful tech solutions. I specialize in AI, ML, and full-stack web development, with experience in real-world projects from driver safety to disease prediction.
+                I'm Gaurav Mathur from Noida, Uttar Pradesh, and I have recently completed my B.Tech degree in Computer Science and Engineering from Vellore Institute of Technology, Vellore. I've developed intermediate programming skills with particular strength in C++, focusing on data structures and algorithms.
+              </p>
+              
+              <p className="text-lg text-gray-600 leading-relaxed">
+                My core coursework has equipped me with comprehensive understanding of Object-Oriented Programming and Database Management Systems. I've explored machine learning and Python extensively, building impactful projects and even publishing a research paper on my Rock, Paper, Scissors project in the International Research Journal on Advanced Engineering and Management.
               </p>
               
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <span className="text-2xl">📍</span>
-                  <span className="text-gray-700">Noida, India</span>
+                  <span className="text-gray-700">Noida, Uttar Pradesh, India</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <span className="text-2xl">📧</span>
                   <span className="text-gray-700">mathurgaurav1742@gmail.com</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="text-2xl">🎓</span>
+                  <span className="text-gray-700">B.Tech CSE - VIT Vellore</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Linkedin className="w-6 h-6 text-blue-600" />
@@ -208,17 +237,22 @@ const Index = () => {
             </div>
             
             <div className="bg-gradient-to-br from-blue-100 to-purple-100 p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Experience</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Experience & Achievements</h3>
               <div className="space-y-6">
                 <div>
-                  <h4 className="font-semibold text-lg text-gray-900">Sky Scanner</h4>
-                  <p className="text-blue-600 font-medium">Front-End Software Engineer Intern</p>
-                  <p className="text-gray-600 mt-2">Developed a flight scheduling UI with modern JS & CSS.</p>
+                  <h4 className="font-semibold text-lg text-gray-900">Published Research</h4>
+                  <p className="text-blue-600 font-medium">International Research Journal</p>
+                  <p className="text-gray-600 mt-2">Rock, Paper, Scissors project using OpenCV and ML accepted for publication.</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg text-gray-900">HEARTS-UHET Club</h4>
                   <p className="text-blue-600 font-medium">Poster Designer</p>
-                  <p className="text-gray-600 mt-2">Led visual design efforts for social awareness events.</p>
+                  <p className="text-gray-600 mt-2">Contributed to social awareness initiatives helping underprivileged students.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg text-gray-900">Academic Foundation</h4>
+                  <p className="text-blue-600 font-medium">RAI School (10th & 12th)</p>
+                  <p className="text-gray-600 mt-2">Strong foundation in mathematics and sciences leading to engineering.</p>
                 </div>
               </div>
             </div>
@@ -232,17 +266,22 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Featured Projects</h2>
             <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
-            <p className="text-xl text-gray-600 mt-6">Innovative solutions that make a difference</p>
+            <p className="text-xl text-gray-600 mt-6">Innovative solutions with real-world impact</p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 bg-white">
+              <Card key={index} className={`group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 bg-white ${project.highlight ? 'ring-2 ring-orange-200' : ''}`}>
                 <CardHeader>
                   <div className="flex justify-between items-start mb-3">
-                    <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+                    <Badge variant="secondary" className={`${project.highlight ? 'bg-orange-100 text-orange-800' : 'bg-blue-100 text-blue-800'}`}>
                       {project.type}
                     </Badge>
+                    {project.highlight && (
+                      <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                        Published
+                      </Badge>
+                    )}
                   </div>
                   <CardTitle className="text-xl font-bold group-hover:text-blue-600 transition-colors">
                     {project.title}
@@ -388,7 +427,7 @@ const Index = () => {
         <div className="container max-w-6xl mx-auto">
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-4">Gaurav Mathur</h3>
-            <p className="text-gray-400 mb-6">Building the future, one line of code at a time.</p>
+            <p className="text-gray-400 mb-6">Building intelligent solutions, one project at a time.</p>
             
             <div className="flex justify-center space-x-6 mb-8">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">

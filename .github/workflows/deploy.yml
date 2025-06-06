@@ -6,8 +6,9 @@ on:
 
 # Add permissions at the workflow level
 permissions:
-  id-token: write  # Required for actions/deploy-pages
-  contents: write  # Required for checkout and artifact upload
+  id-token: write   # Required for OIDC authentication
+  contents: write   # Required for checkout and artifact upload
+  pages: write      # Required for deploying to GitHub Pages
 
 jobs:
   build-and-deploy:

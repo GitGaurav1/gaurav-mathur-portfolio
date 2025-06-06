@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, ArrowUp, Github, Linkedin, Code, Sparkles, Zap, Award, BookOpen, Mail, Phone, MapPin } from "lucide-react";
+import { ArrowDown, ArrowUp, Github, Linkedin, Code, Sparkles, Zap, Award, BookOpen, Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -93,7 +93,38 @@ const Index = () => {
     "Tools": ["MySQL", "DBMS", "Tesseract", "OpenCV"],
     "Concepts": ["Data Structures", "OOPs", "Cloud Computing", "ML"]
   };
-  const certifications = ["AWS Certified Cloud Practitioner", "Google Cloud Digital Leader", "IBM Data Science Certificates"];
+  const certifications = [
+    {
+      title: "AWS Certified Cloud Practitioner",
+      link: "https://drive.google.com/file/d/1XcYqt_urzZP_FtRNoWHOjWTHc1xn9WD1/view?usp=sharing",
+      icon: "☁️",
+      description: "Cloud Computing Foundation"
+    },
+    {
+      title: "Google Cloud Digital Leader",
+      link: "https://drive.google.com/file/d/13Sf3IXjTkbYvjDhqdfduJULJ_sj3wW0T/view?usp=sharing",
+      icon: "🌐",
+      description: "Digital Transformation & Cloud"
+    },
+    {
+      title: "IBM Data Science Certificates",
+      link: "https://drive.google.com/file/d/1hquSA8G04vL5g-JOTGEENo38JnO46iiX/view?usp=sharing",
+      icon: "📊",
+      description: "Data Science & Analytics"
+    },
+    {
+      title: "Sky Scanner (Virtual Internship)",
+      link: "https://drive.google.com/file/d/1jl16BD6h-DCXkTPntC3vlBpOD3K0lZiv/view?usp=sharing",
+      icon: "✈️",
+      description: "Software Development Internship"
+    },
+    {
+      title: "Certificate of Publication",
+      link: "https://drive.google.com/file/d/1vXMzfvVXiWWmjUe5J-OQsPIxOijPTLes/view?usp=sharing",
+      icon: "📝",
+      description: "Research Publication Recognition"
+    }
+  ];
   return <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       {/* Enhanced Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
@@ -377,15 +408,27 @@ const Index = () => {
             <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            {certifications.map((cert, index) => <Card key={index} className="text-center p-8 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border-0 bg-white">
-                <CardContent className="pt-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">🏆</span>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {certifications.map((cert, index) => (
+              <Card key={index} className="group text-center p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 bg-white overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <CardContent className="pt-6 relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl shadow-lg">
+                    {cert.icon}
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">{cert}</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">{cert.title}</h3>
+                  <p className="text-sm text-gray-600 mb-6">{cert.description}</p>
+                  
+                  <Button 
+                    onClick={() => window.open(cert.link, "_blank")}
+                    className="group/btn bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center gap-2 mx-auto"
+                  >
+                    <span>Click Here</span>
+                    <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </div>
       </section>

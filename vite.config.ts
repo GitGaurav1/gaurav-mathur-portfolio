@@ -1,7 +1,13 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc' // using the plugin you already have
+import react from '@vitejs/plugin-react-swc'
+import path from 'path'
 
 export default defineConfig({
-  base: '/gaurav-mathur-portfolio/', // set this to your GitHub repo name
+  base: '/gaurav-mathur-portfolio/', // your GitHub repo name
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
 })

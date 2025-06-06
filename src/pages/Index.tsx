@@ -278,7 +278,7 @@ const Index = () => {
                 <div>
                   <h4 className="font-semibold text-lg text-gray-900">Academic Foundation</h4>
                   <p className="text-blue-600 font-medium">RAI School (10th & 12th)</p>
-                  <p className="text-gray-600 mt-2">Strong foundation in mathematics and sciences leading to engineering.</p>
+                  <p className="text-gray-600 mt-2">RAI School (CBSE Board) – Scored 86% in 10th and 91% in 12th, providing a solid academic foundation.</p>
                 </div>
               </div>
             </div>

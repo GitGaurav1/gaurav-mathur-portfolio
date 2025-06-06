@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
 
+# Add permissions at the workflow level
+permissions:
+  id-token: write  # Required for actions/deploy-pages
+  contents: write  # Required for checkout and artifact upload
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

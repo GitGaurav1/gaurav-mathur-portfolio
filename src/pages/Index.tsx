@@ -236,9 +236,11 @@ const Index = () => {
                 I'm Gaurav Mathur from Noida, Uttar Pradesh, and I have recently completed my B.Tech degree in Computer Science and Engineering from Vellore Institute of Technology, Vellore. I've developed intermediate programming skills with particular strength in C++, focusing on data structures and algorithms.
               </p>
               
-              <p className="text-lg text-gray-600 leading-relaxed text-justify">
-                My core coursework has equipped me with comprehensive understanding of Object-Oriented Programming and Database Management Systems. I've explored machine learning and Python extensively, building impactful projects and even publishing a research paper on my Rock, Paper, Scissors project in the International Research Journal on Advanced Engineering and Management.
-              </p>
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">My core coursework has equipped me with comprehensive understanding of Object-Oriented Programming and Database Management Systems. I've explored machine learning and Python extensively, building impactful projects and even publishing a research paper on my Rock, Paper, Scissors project in the International Research Journal on Advanced Engineering and Management.
+
+
+
+I also possess intermediate knowledge in Cloud Computing, which has enhanced my understanding of modern technologies.</p>
               
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">

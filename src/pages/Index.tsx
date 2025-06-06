@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import emailjs from '@emailjs/browser';
+
 const Index = () => {
   const {
     toast
@@ -233,14 +234,20 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-gray-600 leading-relaxed text-justify">
-                I'm Gaurav Mathur from Noida, Uttar Pradesh, and I have recently completed my B.Tech degree in Computer Science and Engineering from Vellore Institute of Technology, Vellore. I've developed intermediate programming skills with particular strength in C++, focusing on data structures and algorithms.
+                I'm Gaurav Mathur from Noida, Uttar Pradesh, and I have recently completed my B.Tech degree in Computer Science and Engineering from Vellore Institute of Technology, Vellore. My academic journey has been built on a strong foundation, having scored 86% in 10th grade and 91% in 12th grade from RAI School (CBSE Board), which provided me with the discipline and analytical thinking essential for my technical pursuits.
               </p>
               
-              <p className="text-lg text-gray-600 leading-relaxed text-justify">My core coursework has equipped me with comprehensive understanding of Object-Oriented Programming and Database Management Systems. I've explored machine learning and Python extensively, building impactful projects and even publishing a research paper on my Rock, Paper, Scissors project in the International Research Journal on Advanced Engineering and Management.
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
+                I've developed strong programming skills with particular expertise in C++, focusing extensively on data structures and algorithms. My core coursework has equipped me with comprehensive understanding of Object-Oriented Programming and Database Management Systems using MySQL. Additionally, I've explored machine learning and Python extensively, which has enabled me to build impactful projects that solve real-world problems.
+              </p>
 
-
-
-I also possess intermediate knowledge in Cloud Computing, which has enhanced my understanding of modern technologies.</p>
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
+                My expertise extends significantly into Cloud Computing, where I hold professional certifications including AWS Certified Cloud Practitioner and Google Cloud Digital Leader. This knowledge has enhanced my understanding of modern scalable architectures, cloud services, and distributed systems. I'm well-versed in cloud deployment strategies, serverless computing, and how to leverage cloud platforms to build robust, scalable applications that can handle real-world demands.
+              </p>
+              
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
+                One of my proudest achievements is publishing a research paper on my Rock, Paper, Scissors project in the International Research Journal on Advanced Engineering and Management. This accomplishment reflects my commitment to contributing meaningful research to the academic community. Beyond academics, I've been actively involved in the HEARTS-UHET Club as a Poster Designer, contributing to social awareness initiatives that help underprivileged students.
+              </p>
               
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -526,4 +533,5 @@ I also possess intermediate knowledge in Cloud Computing, which has enhanced my 
       </footer>
     </div>;
 };
+
 export default Index;

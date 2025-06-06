@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 
 export default defineConfig({
-  base: '/gaurav-mathur-portfolio/', // your GitHub repo name
+  base: '/gaurav-mathur-portfolio/', // same as your GitHub repo name
   plugins: [react()],
   resolve: {
     alias: {

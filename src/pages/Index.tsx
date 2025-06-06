@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { ArrowDown, ArrowUp, Github, Linkedin, Code, Sparkles, Zap, Award, BookOpen, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { ArrowDown, ArrowUp, Github, Linkedin, Code, Sparkles, Zap, Award, BookOpen, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import emailjs from '@emailjs/browser';
 
 const Index = () => {
   const { toast } = useToast();
@@ -18,14 +19,43 @@ const Index = () => {
     subject: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      // Initialize EmailJS with your public key
+      emailjs.init("gS38EOnqKnHjGdnph");
+
+      // Send email using EmailJS
+      await emailjs.send(
+        "service_oi18c5k", // Service ID
+        "template_lcac572", // Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: "mathurgaurav1742@gmail.com"
+        }
+      );
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon!",
+      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const projects = [
@@ -34,25 +64,30 @@ const Index = () => {
       description: "Gesture-recognition game using computer vision with published research paper.",
       tech: ["Python", "OpenCV", "ML", "Computer Vision"],
       type: "Published Research",
-      highlight: true
+      highlight: true,
+      githubUrl: "https://github.com/GitGaurav1/Rock.-Paper-Scissor-using-OpenCV-and-ML",
+      publishedUrl: "https://goldncloudpublications.com/index.php/irjaem/article/view/520"
     },
     {
       title: "Parkinson's Disease Detection",
       description: "ML model for early detection of Parkinson's using voice features and biomedical data.",
       tech: ["Python", "SVM", "Machine Learning", "Biomedical Data"],
-      type: "Healthcare AI"
+      type: "Healthcare AI",
+      githubUrl: "https://github.com/GitGaurav1/Parkinson-s-Disease-Detection"
     },
     {
       title: "Drowsiness Detection System",
       description: "Real-time system to detect driver drowsiness and enhance road safety.",
-      tech: ["Python", "OpenCV", "Computer Vision", "Safety Systems"],
-      type: "Computer Vision"
+      tech: ["Python", "OpenCV", "Computer Vision", "OpenStreetMap"],
+      type: "Computer Vision and OpenStreetMap",
+      githubUrl: "https://github.com/GitGaurav1/Driver-Drowsiness-Detection-System"
     },
     {
       title: "Cyberbullying Threat Analysis",
       description: "Analyzes text & images for bullying, sends reports to parents.",
       tech: ["Flask", "Tesseract", "VADER", "Maps API"],
-      type: "AI/ML Project"
+      type: "Full Stack and AI",
+      githubUrl: "https://github.com/GitGaurav1/Cyberbullying-Threat-Analysis"
     }
   ];
 
@@ -160,6 +195,7 @@ const Index = () => {
                 variant="outline" 
                 size="lg"
                 className="bg-white/80 backdrop-blur-sm border-2 border-slate-200 text-slate-700 hover:bg-white hover:border-blue-300 hover:text-blue-700 px-8 py-4 rounded-full text-lg font-bold shadow-lg transform hover:scale-105 transition-all duration-300"
+                onClick={() => window.open("https://drive.google.com/file/d/1762fo402UmAtvEsQa2F5PBh6r1G5-6Y2/view", "_blank")}
               >
                 <span className="mr-2">Download Resume</span>
                 <BookOpen className="w-5 h-5" />
@@ -170,7 +206,7 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-blue-100 shadow-lg">
                 <div className="text-3xl font-black text-blue-600 mb-2">4+</div>
-                <div className="text-sm font-semibold text-slate-600">ML Projects</div>
+                <div className="text-sm font-semibold text-slate-600">Projects</div>
               </div>
               <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-purple-100 shadow-lg">
                 <div className="text-3xl font-black text-purple-600 mb-2">1</div>
@@ -232,7 +268,14 @@ const Index = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Linkedin className="w-6 h-6 text-blue-600" />
-                  <a href="#" className="text-blue-600 hover:underline">LinkedIn Profile</a>
+                  <a 
+                    href="https://www.linkedin.com/in/gaurav-mathur-56759924b/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-600 hover:underline"
+                  >
+                    LinkedIn Profile
+                  </a>
                 </div>
               </div>
             </div>
@@ -300,13 +343,25 @@ const Index = () => {
                     ))}
                   </div>
                   <div className="flex space-x-3">
-                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center space-x-2"
+                      onClick={() => window.open(project.githubUrl, "_blank")}
+                    >
                       <Github className="w-4 h-4" />
                       <span>GitHub</span>
                     </Button>
-                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                      View Project
-                    </Button>
+                    {project.publishedUrl && (
+                      <Button 
+                        size="sm" 
+                        className="bg-green-600 hover:bg-green-700 flex items-center space-x-2"
+                        onClick={() => window.open(project.publishedUrl, "_blank")}
+                      >
+                        <Award className="w-4 h-4" />
+                        <span>Published</span>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -367,7 +422,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section - Enhanced to match reference */}
+      {/* Contact Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-orange-50 to-yellow-50">
         <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -400,7 +455,7 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-500 mb-1">Phone</p>
-                    <p className="text-lg font-semibold text-gray-900">+91 (XXX) XXX-XXXX</p>
+                    <p className="text-lg font-semibold text-gray-900">+91 9043075952</p>
                   </div>
                 </div>
                 
@@ -410,7 +465,31 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-500 mb-1">LinkedIn</p>
-                    <p className="text-lg font-semibold text-gray-900">Gaurav Mathur</p>
+                    <a 
+                      href="https://www.linkedin.com/in/gaurav-mathur-56759924b/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-lg font-semibold text-blue-600 hover:underline"
+                    >
+                      Gaurav Mathur
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                    <Github className="w-6 h-6 text-gray-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500 mb-1">GitHub</p>
+                    <a 
+                      href="https://github.com/GitGaurav1" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-lg font-semibold text-gray-600 hover:underline"
+                    >
+                      Username - GitGaurav1
+                    </a>
                   </div>
                 </div>
                 
@@ -421,16 +500,6 @@ const Index = () => {
                   <div>
                     <p className="text-sm font-medium text-gray-500 mb-1">Location</p>
                     <p className="text-lg font-semibold text-gray-900">Noida, Uttar Pradesh</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Clock className="w-6 h-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-500 mb-1">Working Hours</p>
-                    <p className="text-lg font-semibold text-gray-900">Mon - Fri, 9:00 - 17:00</p>
                   </div>
                 </div>
               </div>
@@ -493,9 +562,10 @@ const Index = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-4 rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-4 rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </div>
@@ -511,10 +581,20 @@ const Index = () => {
             <p className="text-gray-400 mb-6">Building intelligent solutions, one project at a time.</p>
             
             <div className="flex justify-center space-x-6 mb-8">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a 
+                href="https://www.linkedin.com/in/gaurav-mathur-56759924b/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
                 <Linkedin className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a 
+                href="https://github.com/GitGaurav1" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
                 <Github className="w-6 h-6" />
               </a>
             </div>

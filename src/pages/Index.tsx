@@ -21,6 +21,7 @@ const Index = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -60,6 +61,7 @@ const Index = () => {
       setIsSubmitting(false);
     }
   };
+
   const projects = [{
     title: "Rock, Paper, Scissors Game",
     description: "Gesture-recognition game using computer vision with published research paper.",
@@ -87,12 +89,14 @@ const Index = () => {
     type: "Full Stack and AI",
     githubUrl: "https://github.com/GitGaurav1/Cyberbullying-Threat-Analysis"
   }];
+  
   const skills = {
     "Languages": ["C++", "Python", "HTML", "CSS", "JavaScript"],
     "Frameworks": ["React"],
     "Tools": ["MySQL", "DBMS", "Tesseract", "OpenCV"],
     "Concepts": ["Data Structures", "OOPs", "Cloud Computing", "ML"]
   };
+
   const certifications = [
     {
       title: "AWS Certified Cloud Practitioner",
@@ -125,6 +129,7 @@ const Index = () => {
       description: "Research Publication Recognition"
     }
   ];
+
   return <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       {/* Enhanced Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
@@ -215,7 +220,7 @@ const Index = () => {
                 <span className="mr-2">Explore My Work</span>
                 <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg" className="bg-white/80 backdrop-blur-sm border-2 border-slate-200 text-slate-700 hover:bg-white hover:border-blue-300 hover:text-blue-700 px-8 py-4 rounded-full text-lg font-bold shadow-lg transform hover:scale-105 transition-all duration-300" onClick={() => window.open("https://drive.google.com/file/d/1762fo402UmAtvEsQa2F5PBh6r1G5-6Y2/view", "_blank")}>
+              <Button variant="outline" size="lg" className="bg-white/80 backdrop-blur-sm border-2 border-slate-200 text-slate-700 hover:bg-white hover:border-blue-300 hover:text-blue-700 px-8 py-4 rounded-full text-lg font-bold shadow-lg transform hover:scale-105 transition-all duration-300" onClick={() => window.open("https://drive.google.com/file/d/1k-8D6iIdL5k9JiKMnNr6ogHWrAhOo1Hq/view?usp=sharing", "_blank")}>
                 <span className="mr-2">Download Resume</span>
                 <BookOpen className="w-5 h-5" />
               </Button>
